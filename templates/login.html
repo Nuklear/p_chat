@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Login</h2>
+    <form action="" method="post" name="login">
+        {{form.hidden_tag()}}
+        <p>
+            Enter login:
+            {{form.login(size=50)}} <br>
+            {% for error in form.errors.login %}
+            <span style="color:red;">[{{error}}]</span>
+            {% endfor %} <br>
+        </p>
+        <p>
+            Enter password: {{form.password(size=50)}} <br>
+            {% if error_pas %} <p class=error style="color:red">{{error_pas}}</p>{% endif %}
+            {% for error in form.errors.password %}
+            <span style="color:red;">[{{error}}]</span>
+            {% endfor %} <br>
+        </p>
+        <p>
+            <input type="submit" value="Sign In">
+        </p>
+    </form>
+{% endblock %}

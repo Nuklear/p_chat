@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Chat</title>
+    <style>
+        div {padding:10px;}
+        .div_head {
+            height: 60px;
+            width: 100%;
+            background-color: #b6ff00;
+            position: static;
+            text-align: center;
+        }
+        .div_left {
+            width: 19%;
+            height: 70%;
+            float: left;
+        }
+        .div_main {
+            width: 78%;
+            float: left;
+        }
+        .div_footer {
+            height: 10%;
+            width: 100%;
+            background-color: #0fb0b0;
+            position: relative;
+            bottom: 0;
+            clear: left;
+        }
+    </style>
+    <script type="text/javascript">
+        function doClear(theText) { theText.value = ""}
+        function doDefault(theText) { if (theText.value == "") { theText.value = theText.defaultValue } }
+</script>
+</head>
+<body>
+    <div class="div_head">
+        {% if name %}
+            <h1>Welcome to Chat - "{{name}}"!</h1>
+        {% else %}
+            <h1>Welcome to Chat !</h1>
+        {% endif %}
+    </div>
+
+    <div class="div_left">
+        <a href="/reg">Registration</a><br>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <div class="div_main">
+    {% block content %}
+    {% endblock %}
+    </div>
+
+    <div class="div_footer">
+    Footer
+    </div>
+</body>
+</html>

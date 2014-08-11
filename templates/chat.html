@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+    <a href="/chat_room">Back to chatroom</a>
+    <h1> "{{chat_room}}"</h1>
+       <div style="border:solid; width:700px;height:300px;margin:10px;overflow: auto;">
+            {%if mes %}
+            {%for m in mes|reverse() %}
+            {{m}}<br>
+            {% endfor %}
+           {% endif %}
+       </div>
+        <form action="" method="post" name="login" style="border: 5px solid red">
+        {{form.hidden_tag()}}
+        <p>
+            Message:
+            {{form.message(size=50, onFocus="doClear(this)")}}
+            {% for error in form.errors.message %}
+            <span style="color:red;">[{{error}}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            <input type="submit" value="Send">
+        </p>
+    </form>
+{% endblock %}

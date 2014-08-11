@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for chanel in ch_l %}
+    <p><a href="{{ch_l[chanel]}}">{{chanel}}</a></p>
+    {% endfor %}
+    <form action="" method="post" name="login" style="border: 5px solid red">
+        {{form.hidden_tag()}}
+        <p>
+            Create new chat room:
+            {{form.chanel_name(size=50)}} <br>
+            {% if error_chat %} <p class=error style="color:red">{{error_chat}}</p>{% endif %}
+            {% for error in form.errors.chanel_name %}
+            <span style="color:red;">[{{error}}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            <input type="submit" value="Register">
+        </p>
+    </form>
+{% endblock %}
